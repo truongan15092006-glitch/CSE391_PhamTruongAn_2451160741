@@ -326,3 +326,110 @@ border-box giúp:
 - dễ tính toán
 - tránh vỡ layout
 - quản lý responsive tốt hơn
+
+# Câu C2
+## 1. "Sản phẩm A"
+HTML:
+<h2 class="title highlight">
+Sản phẩm A
+</h2>
+
+### Font-size
+Rule áp dụng:
+.card .title {
+    font-size: 20px;
+}
+=> font-size: 20px
+
+### Color
+Các rule liên quan:
+.card {
+    color: blue;
+}
+#featured .title {
+    color: red;
+}
+.highlight {
+    color: green !important;
+}
+.highlight có:
+!important
+=> ưu tiên cao nhất.
+Color cuối:
+green
+
+## Kết quả
+"Sản phẩm A
+font-size: 20px
+color: green
+
+## 2. "Mô tả sản phẩm"
+HTML:
+<p>Mô tả sản phẩm</p>
+Rule:
+.card {
+    color: blue;
+}
+.card p {
+    color: inherit;
+}
+
+inherit:
+kế thừa màu từ parent.
+Parent: .card
+có: color: blue
+=> p nhận màu: blue
+## Kết quả
+"Mô tả sản phẩm"
+color: blue
+## 3. "Sản phẩm B"
+HTML:
+<h2 class="title">
+Sản phẩm B
+</h2>
+### Font-size
+Rule:
+.card .title {
+    font-size: 20px;
+}
+=> font-size: 20px
+
+### Color
+Không có: .highlight
+Không có: #featured
+Nên h2 kế thừa từ:
+.card {
+    color: blue;
+}
+=> color: blue
+## Kết quả
+"Sản phẩm B"
+font-size: 20px
+color: blue
+
+## 4. "Mô tả sản phẩm B"
+HTML:
+<p class="highlight">
+Mô tả sản phẩm B
+</p>
+Rule:
+.highlight {
+    color: green !important;
+}
+=> color:green
+!important mạnh hơn inherit.
+
+## Kết quả
+"Mô tả sản phẩm B"
+color: green
+
+## Kết luận Cascade
+Ưu tiên CSS:
+1. !important
+2. Inline style
+3. ID selector
+4. Class selector
+5. Element selector
+6. Inheritance
+Specificity càng cao:
+độ ưu tiên càng lớn.
