@@ -128,3 +128,141 @@ p {
 Màu: black
 Vì !important ưu tiên cao nhất.
 
+# Bài B1
+## Các loại selector đã sử dụng
+1. Element selector
+Ví dụ:
+table
+body
+footer
+2. ID selector
+Ví dụ:
+#main-header
+3. Class selector
+Ví dụ:
+.active
+4. Descendant selector
+Ví dụ:
+nav a
+5. Pseudo-class selector
+Ví dụ:
+nav a:hover
+tr:nth-child(even)
+tr:hover
+## Giải thích
+- Element selector:
+chọn theo tên thẻ HTML.
+- ID selector:
+chọn phần tử có id cụ thể.
+- Class selector:
+chọn phần tử theo class.
+- Descendant selector:
+chọn phần tử con bên trong phần tử cha.
+- Pseudo-class:
+tác động khi có trạng thái đặc biệt như hover.
+
+# Bài B2
+
+## Phần 1 — Content-box vs Border-box
+
+### Hộp 1 (content-box)
+
+width = 300px
+padding = 20px x 2 = 40px
+border = 5px x 2 = 10px
+
+Chiều rộng thực tế:
+300 + 40 + 10
+= 350px
+
+---
+
+### Hộp 2 (border-box)
+
+width = 300px
+
+Padding và border đã tính bên trong width.
+
+Chiều rộng thực tế:
+300px
+
+---
+
+## Giải thích sự khác biệt
+
+- content-box:
+width chỉ tính content.
+
+- border-box:
+width bao gồm:
+content + padding + border.
+
+Vì vậy border-box dễ kiểm soát layout hơn.
+
+---
+
+## Phần 2 — Layout 3 cột
+### Nếu không dùng border-box
+Sidebar:
+250 + 30 padding
+= 280px
+Content:
+500 + 40 padding
+= 540px
+Ads:
+250 + 30 padding
+= 280px
+Tổng:
+280 + 540 + 280
+= 1100px
+=> vượt quá container 1000px.
+
+### Nếu dùng border-box
+Padding được tính bên trong width.
+Tổng
+250 + 500 + 250
+= 1000px
+=> layout không bị vỡ.
+
+# Bài B3
+
+## Danh sách specificity
+1. p
+Specificity:
+(0,0,1)
+2. .text
+(0,1,0)
+3. .highlight
+(0,1,0)
+4. p.text
+(0,1,1)
+5. body p
+(0,0,2)
+6. body .text
+(0,1,1)
+7. p.highlight
+(0,1,1)
+8. #demo
+(1,0,0)
+9. #demo.text
+(1,1,0)
+10. #demo.text.highlight
+(1,2,0)
+
+## Màu cuối cùng
+Màu:
+gold
+Vì: #demo.text.highlight
+có specificity mạnh nhất:
+(1,2,0)
+
+
+## Nếu đổi thứ tự CSS
+- Nếu specificity KHÁC nhau:
+kết quả không đổi.
+- Nếu specificity BẰNG nhau:
+rule viết sau sẽ thắng.
+Ví dụ:
+.text và .highlight
+đều có: (0,1,0)
+Rule nào viết sau sẽ được áp dụng.
